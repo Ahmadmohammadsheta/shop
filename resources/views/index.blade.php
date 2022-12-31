@@ -226,7 +226,7 @@
               <li class="nav-item">
                 <a href="{{route('colors.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>الطلبات</p>
+                  <p>الالوان</p>
                 </a>
               </li>
            
