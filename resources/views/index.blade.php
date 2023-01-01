@@ -36,7 +36,8 @@
 
 {{-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>tinymce.init({selector:'textarea'});</script> --}}
-
+@viteReactRefresh
+@vite(['resources/css/app.css','resources/js/app.jsx'])
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -223,6 +224,7 @@
                   <p>المنتجات</p>
                 </a>
               </li>
+              <div id="app"></div>
               <li class="nav-item">
                 <a href="{{route('colors.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
