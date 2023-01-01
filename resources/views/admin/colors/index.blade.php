@@ -1,6 +1,6 @@
 @extends('admin.layouts.index')
 @section('content')
-{{-- <a href="{{route('admin.sliders.create')}}" class="btn btn-success btn-lg">اضافة</a> --}}
+<a href="{{route('colors.create')}}" class="btn btn-success btn-lg">اضافة</a>
     <div>
         <table class="table text-center">
             <thead class="thead-dark">
@@ -24,11 +24,11 @@
                     بدون صوره
                   @endif
                   </td> --}}
-                {{-- <td>
-                    <a class="btn btn-info btn-sm" href="{{route('admin.sliders.edit',$item->id)}}"><i class="fa fa-edit"></i></a>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{{route('colors.edit',$item->id)}}"><i class="fa fa-edit"></i></a>
                     <button form="delete{{$item->id}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                    <form id="delete{{$item->id}}" action="{{route('admin.sliders.destroy',$item->id)}}" method="POST">@csrf @method('delete')</form>
-                </td> --}}
+                    <form id="delete{{$item->id}}" action="{{route('colors.destroy',$item->id)}}" method="POST">@csrf @method('delete')</form>
+                </td>
               </tr>
               @empty
               <tr>
