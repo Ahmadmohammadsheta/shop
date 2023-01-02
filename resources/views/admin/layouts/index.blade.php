@@ -166,7 +166,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="" class="brand-link">
+    <a href="{{route('index')}}" class="brand-link">
       <img src="{{asset('Admin3')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Panal</span>
@@ -197,36 +197,22 @@
               </li>
 
               <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>سلايدر</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('categories.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>الاقسام</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('sizes.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>التاجات</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>المنتجات</p>
+                  <p>الاحجام</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('colors.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>الطلبات</p>
+                  <p>الالوان</p>
                 </a>
               </li>
            

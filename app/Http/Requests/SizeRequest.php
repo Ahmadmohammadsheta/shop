@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ColorRequest extends FormRequest
+class SizeRequest extends FormRequest
 {
     /**
      * store validation
@@ -21,11 +21,13 @@ class ColorRequest extends FormRequest
      */
     public function updateRequests()
     {
+       
         return [
             'name'      =>  'required',
         ];
     }
 
+    
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -33,7 +35,7 @@ class ColorRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return True;
     }
 
     /**
@@ -43,8 +45,9 @@ class ColorRequest extends FormRequest
      */
     public function rules()
     {
-        return request()->method() == 'PUT' ? $this->updateRequests() : $this->storeRequests();
+            return request()->method() == 'PUT' ? $this->updateRequests() : $this->storeRequests();
     }
+
 
     /**
      * Get the error messages for the defined validation rules.

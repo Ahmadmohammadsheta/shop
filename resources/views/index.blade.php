@@ -197,31 +197,19 @@
                 </a>
               </li>
 
+            
               <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>سلايدر</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('categories.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>الاقسام</p>
                 </a>
               </li>
 
+            
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('sizes.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
-                  <p>التاجات</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>المنتجات</p>
+                  <p>الاحجام</p>
                 </a>
               </li>
               {{-- <div id="app"></div> --}}

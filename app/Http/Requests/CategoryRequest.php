@@ -4,15 +4,17 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ColorRequest extends FormRequest
+class CategoryRequest extends FormRequest
 {
-    /**
+
+      /**
      * store validation
      */
     public function storeRequests()
     {
         return [
             'name'      =>  'required',
+            'parent_id' =>  'required', 
         ];
     }
      
@@ -21,8 +23,10 @@ class ColorRequest extends FormRequest
      */
     public function updateRequests()
     {
+       
         return [
             'name'      =>  'required',
+            'parent_id'    =>  'required',
         ];
     }
 
@@ -44,6 +48,7 @@ class ColorRequest extends FormRequest
     public function rules()
     {
         return request()->method() == 'PUT' ? $this->updateRequests() : $this->storeRequests();
+
     }
 
     /**

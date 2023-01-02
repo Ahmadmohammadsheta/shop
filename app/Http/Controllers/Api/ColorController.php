@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ColorRequest;
+use App\Http\Resources\ColorResource;
 use App\Models\Color;
 use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class ColorController extends Controller
     {
         $colors= Color::all();
         return view('admin.colors.index',[
-            "data" => $colors,
+            "data" => ColorResource::collection($colors),
         ]);
     }
 
