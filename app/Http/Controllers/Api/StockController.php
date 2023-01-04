@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StockRequest;
+use App\Http\Resources\StockResource;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,10 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+        $stocks= Stock::all();
+        return view('admin.stocks.index',[
+            "data" => StockResource::collection($stocks),
+        ]);
     }
 
     /**
@@ -25,7 +30,7 @@ class StockController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.stocks.create');
     }
 
     /**
@@ -34,9 +39,10 @@ class StockController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StockRequest $request)
     {
-        //
+        Stock::query()->Create($request->validated());
+        return redirect()->route('stocks.index');
     }
 
     /**
@@ -58,7 +64,7 @@ class StockController extends Controller
      */
     public function edit(Stock $stock)
     {
-        //
+        return view ('admin.stocks.edit', ['item'=>$stock]);
     }
 
     /**
@@ -68,9 +74,10 @@ class StockController extends Controller
      * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Stock $stock)
+    public function update(StockRequest $request, Stock $stock)
     {
-        //
+        $stock->update($request->validated());
+        return redirect()->route('stocks.index');
     }
 
     /**
@@ -81,6 +88,7 @@ class StockController extends Controller
      */
     public function destroy(Stock $stock)
     {
-        //
+        Stock::query()->find($stock->id)->delete();
+        return redirect()->route('stocks.index');
     }
 }

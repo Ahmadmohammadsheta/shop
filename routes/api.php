@@ -25,6 +25,6 @@ Route::resource('colors', ColorController::class);
 Route::resource('products', ProductController::class);
 Route::resource('product_images', ProductImagesController::class);
 Route::resource('sizes', SizeController::class);
-Route::resource('Stocks', StockController::class);
-Route::resource('Traders', TraderController::class);
+Route::resource('stocks', StockController::class);
+Route::resource('traders', TraderController::class);
 

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->decimal('bay_discount', 4, 2)->nullable()->default(0);
             $table->integer('quantity')->nullable()->default(0);
             $table->tinyInteger('min_quantity');
-            $table->unsignedBigInteger('trader_id');
+            $table->foreignId('trader_id')->constrained()->cascadeOnDelete();
             $table->string('stock_code');
             $table->bigInteger('barcode');
             $table->timestamps();
