@@ -197,6 +197,13 @@
               </li>
 
               <li class="nav-item">
+                <a href="{{route('clients.index')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>العملاء</p>
+                </a>
+              </li>
+              
+              <li class="nav-item">
                 <a href="{{route('stocks.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>المخازن</p>

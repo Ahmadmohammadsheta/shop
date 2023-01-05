@@ -22,4 +22,9 @@ class Product extends Model
     {
         return $this->hasMany(Stock::class);
     }
+
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class);
+    }
 }
