@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products= Product::all();
+        return view('admin.products.index',[
+            "data" => ProductResource::collection($products),
+        ]);
     }
 
     /**
@@ -25,7 +30,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
+
     }
 
     /**
@@ -34,9 +40,10 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        Product::query()->Create($request->validated());
+        return redirect()->route('products.index');
     }
 
     /**
@@ -58,7 +65,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view ('admin.products.edit', ['item'=>$product]);
+
     }
 
     /**
@@ -68,9 +76,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $product->update($request->validated());
+        return redirect()->route('products.index');
     }
 
     /**
@@ -81,6 +90,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        Product::query()->find($product->id)->delete();
+        return redirect()->route('products.index');
     }
 }

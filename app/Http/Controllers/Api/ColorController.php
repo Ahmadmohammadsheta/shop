@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ColorRequest;
+use App\Http\Resources\ColorResource;
 use App\Models\Color;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 
 class ColorController extends Controller
@@ -17,7 +20,7 @@ class ColorController extends Controller
     {
         $colors= Color::all();
         return view('admin.colors.index',[
-            "data" => $colors,
+            "data" => ColorResource::collection($colors),
         ]);
     }
 
@@ -28,7 +31,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.colors.create');
     }
 
     /**
@@ -37,9 +40,14 @@ class ColorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ColorRequest $request)
     {
-        //
+      
+        Color::query()->Create([
+            'name'=>$request->name,
+        ]);
+        return redirect()->route('colors.index');
+
     }
 
     /**
@@ -63,7 +71,7 @@ class ColorController extends Controller
      */
     public function edit(Color $color)
     {
-        //
+        return view ('admin.colors.edit', ['item'=>$color]);
     }
 
     /**
@@ -73,9 +81,12 @@ class ColorController extends Controller
      * @param  \App\Models\Color  $color
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Color $color)
+    public function update(ColorRequest $request, Color $color)
     {
-        //
+        Color::query()->find($color->id)->update([
+            'name'=>$request->name,
+        ]);
+        return redirect()->route('colors.index');
     }
 
     /**
@@ -86,6 +97,7 @@ class ColorController extends Controller
      */
     public function destroy(Color $color)
     {
-        //
+        Color::query()->find($color->id)->delete();
+        return redirect()->route('colors.index');
     }
 }

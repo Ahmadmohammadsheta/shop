@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
+use App\Http\Resources\CategoryResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories= Category::all();
+        return view('admin.categories.index',[
+            "data" => CategoryResource::collection($categories),
+        ]);
     }
 
     /**
@@ -25,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -34,9 +39,14 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        
+        Category::query()->Create([
+            'name'=>$request->name,
+            'parent_id'=>$request->parent_id,
+        ]);
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -58,7 +68,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view ('admin.categories.edit', ['item'=>$category]);
+
     }
 
     /**
@@ -68,9 +79,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        $category->update([
+            'name'=>$request->name,
+            'parent_id' => $request->parent_id
+        ]);
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -81,6 +96,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::query()->find($category->id)->delete();
+        return redirect()->route('categories.index');
     }
 }

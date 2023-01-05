@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ColorRequest;
+use App\Http\Requests\SizeRequest;
+use App\Http\Resources\SizeResource;
 use App\Models\Size;
 use Illuminate\Http\Request;
 
@@ -15,7 +18,10 @@ class SizeController extends Controller
      */
     public function index()
     {
-        //
+        $sizes= Size::all();
+        return view('admin.sizes.index',[
+            "data" => SizeResource::collection($sizes),
+        ]);
     }
 
     /**
@@ -25,7 +31,7 @@ class SizeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.sizes.create');
     }
 
     /**
@@ -34,9 +40,20 @@ class SizeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SizeRequest $request)
     {
-        //
+
+        Size::query()->Create([
+            'name'=>$request->name,
+        ]);
+        // $data=$this->validate($request,[
+        //     'name'  => 'required',
+        // ]
+
+        // );
+        // Size::query()->Create($data);
+
+        return redirect()->route('sizes.index');
     }
 
     /**
@@ -58,7 +75,8 @@ class SizeController extends Controller
      */
     public function edit(Size $size)
     {
-        //
+        return view ('admin.sizes.edit', ['item'=>$size]);
+
     }
 
     /**
@@ -68,9 +86,13 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Size $size)
+    public function update(SizeRequest $request, Size $size)
     {
-        //
+        
+        $size->update([
+            'name'=>$request->name,
+        ]);
+        return redirect()->route('sizes.index');
     }
 
     /**
@@ -81,6 +103,7 @@ class SizeController extends Controller
      */
     public function destroy(Size $size)
     {
-        //
+        Size::query()->find($size->id)->delete();
+        return redirect()->route('sizes.index');
     }
 }
