@@ -236,7 +236,12 @@
                   <p>الالوان</p>
                 </a>
               </li>
-           
+              <li class="nav-item">
+                <a href="{{route('finances.index')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>نظام الدفع</p>
+                </a>
+              </li>
             
           </ul>
         </nav>

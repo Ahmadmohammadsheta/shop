@@ -31,6 +31,27 @@
 
                 <div class="row">
                     <div class="col-6 form-group">
+                        <label for="">Sale_price</label>
+                        <input class="form-control"  name="sale_price" value="{{ old('sale_price') }}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="">Bay_Price</label>
+                        <input class="form-control"  name="bay_price" value="{{ old('bay_price') }}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="">Bay_Discount</label>
+                        <input class="form-control"  name="bay_discount" value="{{ old('bay_discount') }}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 form-group">
                         <label for="">Dscription</label>
                         <input class="form-control"  name="description" value="{{ old('description') }}">
                     </div>

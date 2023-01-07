@@ -10,14 +10,13 @@
                 <th scope="col">Product_Id</th>
                 <th scope="col">Color_Id</th>
                 <th scope="col">Size_Id</th>
-                <th scope="col">Sale_Price</th>
-                <th scope="col">Bay_Price</th>
-                <th scope="col">Bay_Discount</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Min_Quantity</th>
                 <th scope="col">Trader_Id</th>
                 <th scope="col">Stock_Code</th>
                 <th scope="col">Barcode</th>
+                <th scope="col">Over_Price</th>
+
                
 
               </tr>
@@ -31,14 +30,13 @@
                 {{-- <td>{{$item->Category->name}}</td> --}}
                 <td>{{$item->color->name}}</td>
                 <td>{{$item->size->name}}</td>
-                <td>{{$item->sale_price}}</td>
-                <td>{{$item->bay_price}}</td>
-                <td>{{$item->bay_discount}}</td>
                 <td>{{$item->quantity}}</td>
+                <td>{{$item->over_price}}</td>
                 <td>{{$item->min_quantity}}</td>
                 <td>{{$item->trader_id}}</td>
                 <td>{{$item->stock_code}}</td>
                 <td>{{$item->barcode}}</td>
+                <td>{{$item->over_price}}</td>
                 
 
 

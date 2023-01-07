@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ClientRequest;
-use App\Http\Resources\ClientResource;
-use App\Models\Client;
+use App\Http\Requests\FinanceRequest;
+use App\Http\Resources\FinanceResource;
+use App\Models\Finance;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class FinanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients= Client::all();
-        return view('admin.clients.index',[
-            "data" => ClientResource::collection($clients),
+        $finances= Finance::all();
+        return view('admin.finances.index',[
+            "data" => FinanceResource::collection($finances),
         ]);
     }
 
@@ -30,7 +30,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('admin.clients.create');
+        return view('admin.finances.create');
+
     }
 
     /**
@@ -39,19 +40,19 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClientRequest $request)
+    public function store(FinanceRequest $request)
     {
-        Client::query()->Create($request->validated());
-        return redirect()->route('clients.index');
+        Finance::query()->Create($request->validated());
+        return redirect()->route('finances.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(Finance $finance)
     {
         //
     }
@@ -59,36 +60,36 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit(Finance $finance)
     {
-        return view ('admin.clients.edit', ['item'=>$client]);
+        return view ('admin.finances.edit', ['item'=>$finance]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientRequest $request, Client $client)
+    public function update(FinanceRequest $request, Finance $finance)
     {
-        $client->update($request->validated());
-        return redirect()->route('clients.index');
+        $finance->update($request->validated());
+        return redirect()->route('finances.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(Finance $finance)
     {
-        Client::query()->find($client->id)->delete();
-        return redirect()->route('clients.index');
+        Finance::query()->find($finance->id)->delete();
+        return redirect()->route('finances.index');
     }
 }

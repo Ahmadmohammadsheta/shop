@@ -14,9 +14,12 @@ class ProductRequest extends FormRequest
     public function storeRequests()
     {
         return [
-            'name'      =>  'required',
-            'category_id' =>  'required', 
-            'description' => 'required',
+            'name'         =>  'required',
+            'category_id'  =>  'required', 
+            'sale_price'   =>  'required',
+            'bay_price'      =>  'required',
+            'bay_discount'   =>  'required',
+            'description'  => 'nullable',
             'product_code' => 'required'
         ];
     }
@@ -28,9 +31,12 @@ class ProductRequest extends FormRequest
     {
        
         return [
-            'name'      =>  'required',
-            'category_id' =>  'required', 
-            'description' => 'nullable',
+            'name'         =>  'required',
+            'category_id'  =>  'required', 
+            'sale_price'   =>  'required',
+            'bay_price'      =>  'required',
+            'bay_discount'   =>  'required',
+            'description'  => 'nullable',
             'product_code' => 'required'
         ];
     }

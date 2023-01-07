@@ -28,4 +28,6 @@ Route::resource('sizes', SizeController::class);
 Route::resource('stocks', StockController::class);
 Route::resource('traders', TraderController::class);
 Route::resource('clients', ClientController::class);
+Route::resource('finances', FinanceController::class);
+Route::resource('payments', PaymentController::class);
 

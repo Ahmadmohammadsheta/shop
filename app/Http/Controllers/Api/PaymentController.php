@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ClientRequest;
-use App\Http\Resources\ClientResource;
-use App\Models\Client;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients= Client::all();
-        return view('admin.clients.index',[
-            "data" => ClientResource::collection($clients),
-        ]);
+        //
     }
 
     /**
@@ -30,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('admin.clients.create');
+        //
     }
 
     /**
@@ -39,19 +34,18 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClientRequest $request)
+    public function store(Request $request)
     {
-        Client::query()->Create($request->validated());
-        return redirect()->route('clients.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
+    public function show(Payment $payment)
     {
         //
     }
@@ -59,36 +53,34 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit(Payment $payment)
     {
-        return view ('admin.clients.edit', ['item'=>$client]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientRequest $request, Client $client)
+    public function update(Request $request, Payment $payment)
     {
-        $client->update($request->validated());
-        return redirect()->route('clients.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Client  $client
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy(Payment $payment)
     {
-        Client::query()->find($client->id)->delete();
-        return redirect()->route('clients.index');
+        //
     }
 }

@@ -232,11 +232,17 @@
                   <p>الاحجام</p>
                 </a>
               </li>
-              {{-- <div id="app"></div> --}}
+              
               <li class="nav-item">
                 <a href="{{route('colors.index')}}" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>الالوان</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('finances.index')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>نظام الدفع</p>
                 </a>
               </li>
            
