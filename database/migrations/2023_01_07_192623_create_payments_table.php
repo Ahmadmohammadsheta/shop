@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             $table->foreignId('client_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('financy_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('finance_id')->constrained()->cascadeOnDelete();
             $table->decimal('sale_price', 10, 2)->default(0);
             $table->decimal('paid');
             $table->string('payment_kind');

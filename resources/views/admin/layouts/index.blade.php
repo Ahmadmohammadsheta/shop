@@ -242,6 +242,12 @@
                   <p>نظام الدفع</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{route('payments.index')}}" class="nav-link">
+                  <i class="fa fa-circle-o nav-icon"></i>
+                  <p>المدفوعات </p>
+                </a>
+              </li>
             
           </ul>
         </nav>

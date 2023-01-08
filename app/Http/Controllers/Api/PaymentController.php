@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PaymentRequest;
+use App\Http\Resources\PaymentResource;
 use App\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,10 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        //
+        $payments= Payment::all();
+        return view('admin.payments.index',[
+            "data" => PaymentResource::collection($payments),
+        ]);
     }
 
     /**
@@ -25,7 +30,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+       return view('admin.payments.create');
     }
 
     /**
@@ -34,9 +39,10 @@ class PaymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PaymentRequest $request)
     {
-        //
+        Payment::query()->create($request->validated());
+        return redirect()->route('payments.index');
     }
 
     /**
@@ -58,7 +64,7 @@ class PaymentController extends Controller
      */
     public function edit(Payment $payment)
     {
-        //
+        return view('admin.payments.edit',['item'=>$payment]);
     }
 
     /**
@@ -68,9 +74,10 @@ class PaymentController extends Controller
      * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Payment $payment)
+    public function update(PaymentRequest $request, Payment $payment)
     {
-        //
+        $payment->update($request->validated());
+        return redirect()->route('payments.index');
     }
 
     /**
@@ -81,6 +88,7 @@ class PaymentController extends Controller
      */
     public function destroy(Payment $payment)
     {
-        //
+        Payment::query()->find($payment->id)->delete();
+        return redirect()->route('payments.index');
     }
 }

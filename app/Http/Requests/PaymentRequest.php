@@ -6,6 +6,41 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PaymentRequest extends FormRequest
 {
+         /**
+     * store validation
+     */
+    public function storeRequests()
+    {
+        return [
+            'product_id'  =>  'required', 
+            'client_id'  =>  'required', 
+            'finance_id'  =>  'required', 
+            'sale_price'   =>  'required',
+            'paid'      =>  'required',
+            'payment_kind'   =>  'required',
+            'all_paid'  => 'nullable',
+            'residual' => 'required'
+        ];
+    }
+     
+    /**
+     * Update validation
+     */
+    public function updateRequests()
+    {
+       
+        return [
+            'product_id'  =>  'required', 
+            'client_id'  =>  'required', 
+            'finance_id'  =>  'required', 
+            'sale_price'   =>  'required',
+            'paid'      =>  'required',
+            'payment_kind'   =>  'required',
+            'all_paid'  => 'nullable',
+            'residual' => 'required'
+        ];
+    }
+    
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -13,7 +48,7 @@ class PaymentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +58,7 @@ class PaymentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        return request()->method() == 'PUT' ? $this->updateRequests() : $this->storeRequests();
+
     }
 }

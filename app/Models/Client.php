@@ -9,8 +9,10 @@ class Client extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    public function products()
+    public function payments()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->hasMany(Payment::class);
     }
+
+    
 }

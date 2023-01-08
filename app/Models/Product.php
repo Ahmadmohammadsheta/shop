@@ -27,4 +27,11 @@ class Product extends Model
     {
         return $this->belongsToMany(Client::class);
     }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+
 }

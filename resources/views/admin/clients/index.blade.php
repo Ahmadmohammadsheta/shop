@@ -20,6 +20,7 @@
                 <td>{{$item->id}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->phone}}</td>
+                <td>{{$item->email}}</td>
                 <td>{{$item->national_id}}</td>
                 {{-- <td>
                   @if ($item->image)
