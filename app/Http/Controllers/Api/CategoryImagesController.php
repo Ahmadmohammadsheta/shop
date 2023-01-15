@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryImagesResource;
+use App\Models\Category;
 use App\Models\CategoryImages;
 use Illuminate\Http\Request;
+use App\Traits\ImageProcessing;
 
 class CategoryImagesController extends Controller
 {
+    use ImageProcessing;
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,7 @@ class CategoryImagesController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -25,7 +29,7 @@ class CategoryImagesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.imagescategories.create');
     }
 
     /**
@@ -36,8 +40,20 @@ class CategoryImagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        if($request->hasFile('img')){
+        
+            foreach ($request->file('img') as $img) {
+                # code...
+                
+                $image = new CategoryImages();
+                        $image->category_id = $request->category_id;
+                        $image->img = $this->setImage($img, 'categories', 450, 450);
+                        $image->save();
+            }}
+           
+            return redirect()->route('categories.show',$request->category_id);
+        }
+    
 
     /**
      * Display the specified resource.
@@ -79,8 +95,11 @@ class CategoryImagesController extends Controller
      * @param  \App\Models\CategoryImages  $categoryImages
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryImages $categoryImages)
+    public function destroy(Request $request , CategoryImages $categoryImages)
     {
-        //
+        $categoryImages =CategoryImages::query()->find($request->images_id)->delete();
+        // dd($categoryImages);
+        // $categoryImages->delete();
+        return redirect()->route('categories.show' , $request['category_id']);
     }
 }

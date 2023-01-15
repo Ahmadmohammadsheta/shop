@@ -10,6 +10,8 @@
                 <th scope="col">Phone</th>
                 <th scope="col">Email</th>
                 <th scope="col">National_ID</th>
+                <th scope="col">Delete & Edit</th>
+
                 
               </tr>
             </thead>
@@ -22,13 +24,6 @@
                 <td>{{$item->phone}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->national_id}}</td>
-                {{-- <td>
-                  @if ($item->image)
-                  <img height="100" src="{{asset('storage/'.$item->image)}}">
-                    @else
-                    بدون صوره
-                  @endif
-                  </td> --}}
                 <td>
                     <a class="btn btn-info btn-sm" href="{{route('clients.edit',$item->id)}}"><i class="fa fa-edit"></i></a>
                     <button form="delete{{$item->id}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>

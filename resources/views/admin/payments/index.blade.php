@@ -14,6 +14,8 @@
                 <th scope="col">payment_kind</th>
                 <th scope="col">all_paid</th>
                 <th scope="col">residual</th>
+                <th scope="col">Delete & Edit</th>
+
 
               </tr>
             </thead>

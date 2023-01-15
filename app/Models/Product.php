@@ -33,5 +33,10 @@ class Product extends Model
         return $this->hasMany(Payment::class);
     }
 
+    public function productImages()
+    {
+        return $this->hasMany(ProductImages::class);
+    }
+
 
 }

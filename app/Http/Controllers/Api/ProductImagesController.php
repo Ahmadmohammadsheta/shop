@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource;
 use App\Models\ProductImages;
 use Illuminate\Http\Request;
+use App\Traits\ImageProcessing;
 
 class ProductImagesController extends Controller
 {
+    use ImageProcessing;
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,7 @@ class ProductImagesController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -25,7 +28,8 @@ class ProductImagesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.imagesproducts.create');
+
     }
 
     /**
@@ -36,8 +40,17 @@ class ProductImagesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        if($request->hasFile('img')){
+        
+            foreach ($request->file('img') as $img) {
+               
+                $image = new ProductImages();
+                        $image->product_id = $request->product_id;  
+                        $image->img = $this->setImage($img, 'products', 450, 450);
+                        $image->save();
+            }}
+            return redirect()->route('products.show' , $request['product_id']);
+        }
 
     /**
      * Display the specified resource.
@@ -79,8 +92,9 @@ class ProductImagesController extends Controller
      * @param  \App\Models\ProductImages  $productImages
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductImages $productImages)
+    public function destroy(Request $request , ProductImages $productImages)
     {
-        //
+        ProductImages::query()->find($request->images_id)->delete();
+        return redirect()->route('products.show', $request['product_id']);
     }
 }

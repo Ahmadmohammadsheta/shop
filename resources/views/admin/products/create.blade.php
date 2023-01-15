@@ -63,6 +63,13 @@
                         <input class="form-control"  name="product_code" value="{{ old('product_code') }}">
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="">Photo</label>
+                        <input class="form-control" type="file" name="img[]" >
+                    </div>
+                </div>
                
                
             </form>

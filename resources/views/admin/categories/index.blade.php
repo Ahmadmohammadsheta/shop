@@ -8,6 +8,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Parent_id</th>
+                <th scope="col">Delete & Edit</th>
 
               </tr>
             </thead>
@@ -16,16 +17,8 @@
                     
               <tr>
                 <td>{{$item->id}}</td>
-                <td>{{$item->name}}</td>
+               <td> <a href="{{route('categories.show', $item->id)}}"> {{$item->name}} </a></td> 
                 <td>{{$item->parent_id}}</td>
-
-                {{-- <td>
-                  @if ($item->image)
-                  <img height="100" src="{{asset('storage/'.$item->image)}}">
-                    @else
-                    بدون صوره
-                  @endif
-                  </td> --}}
                 <td>
                     <a class="btn btn-info btn-sm" href="{{route('categories.edit',$item->id)}}"><i class="fa fa-edit"></i></a>
                     <button form="delete{{$item->id}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>

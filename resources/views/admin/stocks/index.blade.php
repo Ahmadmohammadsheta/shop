@@ -16,6 +16,8 @@
                 <th scope="col">Stock_Code</th>
                 <th scope="col">Barcode</th>
                 <th scope="col">Over_Price</th>
+                <th scope="col">Delete & Edit</th>
+
 
                
 
@@ -27,7 +29,6 @@
               <tr>
                 <td>{{$item->id}}</td>
                 <td>{{$item->product->name}}</td>
-                {{-- <td>{{$item->Category->name}}</td> --}}
                 <td>{{$item->color->name}}</td>
                 <td>{{$item->size->name}}</td>
                 <td>{{$item->quantity}}</td>
@@ -37,16 +38,7 @@
                 <td>{{$item->stock_code}}</td>
                 <td>{{$item->barcode}}</td>
                 <td>{{$item->over_price}}</td>
-                
-
-
-                {{-- <td>
-                  @if ($item->image)
-                  <img height="100" src="{{asset('storage/'.$item->image)}}">
-                    @else
-                    بدون صوره
-                  @endif
-                  </td> --}}
+               
                 <td>
                     <a class="btn btn-info btn-sm" href="{{route('stocks.edit',$item->id)}}"><i class="fa fa-edit"></i></a>
                     <button form="delete{{$item->id}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>

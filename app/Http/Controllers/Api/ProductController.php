@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use App\Models\ProductImages;
 use Illuminate\Http\Request;
-
+use App\Traits\ImageProcessing;
 class ProductController extends Controller
 {
+    use ImageProcessing;
     /**
      * Display a listing of the resource.
      *
@@ -42,7 +44,18 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        Product::query()->Create($request->validated());
+        $cat = Product::query()->Create($request->validated());
+
+        if($request->hasFile('img')){
+            
+            foreach ($request->file('img') as $img) {
+                # code...
+                $image = new ProductImages();
+                        $image->product_id = $cat->id;
+                        $image->img = $this->setImage($img, 'products', 450, 450);
+                        $image->save();
+            }}
+       
         return redirect()->route('products.index');
     }
 
@@ -54,7 +67,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view ('admin.products.show', ['item'=>$product->load(['productImages'])]);
     }
 
     /**

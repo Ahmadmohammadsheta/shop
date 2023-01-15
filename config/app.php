@@ -185,10 +185,11 @@ return [
         /*
          * Package Service Providers...
          */
-        $providers => [
-            
-            'Intervention\Image\ImageServiceProvider'
-        ],
+      
+         Intervention\Image\ImageServiceProvider::class,
+
+        // 'Intervention\Image\ImageServiceProvider',
+       
         /*
          * Application Service Providers...
          */

@@ -7,13 +7,6 @@
             <form id="storeForm"    action="{{ route('stocks.store') }}"  method="POST"
                 enctype="multipart/form-data">
                 @csrf
-                {{-- <div class="row">
-                    <div class="col-6 form-group">
-                        <label for="">Name</label>
-                        <input class="form-control" name="name" value="{{ old('name') }}">
-                    </div>
-                </div> --}}
-
                 <div class="row">
                     <div class="col-6 form-group">
                         <label for="">رقم المنتج</label>

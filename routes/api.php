@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
+use App\Models\ProductImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +32,6 @@ Route::resource('traders', TraderController::class);
 Route::resource('clients', ClientController::class);
 Route::resource('finances', FinanceController::class);
 Route::resource('payments', PaymentController::class);
+Route::resource('imagescategories', CategoryImagesController::class);
+Route::resource('imagesproducts', ProductImagesController::class);
 
